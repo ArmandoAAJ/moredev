@@ -11,7 +11,7 @@ import { useTheme } from "styled-components";
 const Header = () => {
   const { COLORS } = useTheme();
   return (
-    <DefaultContainer>
+    <>
       <Separator height={10} />
       <Container>
         <Typograph size={18}>Produtos</Typograph>
@@ -22,7 +22,7 @@ const Header = () => {
           />
         </Svg>
       </Container>
-    </DefaultContainer>
+    </>
   );
 };
 

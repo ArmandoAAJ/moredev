@@ -17,6 +17,7 @@ export default {
     GREY_700: "#6F6F6F",
     GREY_400: "#CCCCCC",
     GREY_300: "#B4B4B6",
+    GREY_100: "#EBEBED",
   },
 
   FONTS: {

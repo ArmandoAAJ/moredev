@@ -4,7 +4,9 @@ export type ProductContextData = {
   searchProducts: () => Promise<void>;
   products: ProductType[];
   productsNews: ProductType[];
+  searchCategorys: () => Promise<void>;
   isLoading: boolean;
+  categories: CategoryType;
 };
 
 export type ProductProviderProps = {
@@ -23,3 +25,5 @@ export type ProductType = {
   };
   title: string;
 };
+
+export type CategoryType = string[];

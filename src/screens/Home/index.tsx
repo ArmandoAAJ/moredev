@@ -1,16 +1,27 @@
-import React, { useEffect } from "react";
-import { Text, View } from "react-native";
-import { Typograph } from "@/shared/Typograph/index";
+import React, { useEffect, useState } from "react";
 
 import { useProduct } from "@/hooks/Products";
 import Header from "./components/Header";
+import Filter from "./components/Filter";
+import { DefaultContainer } from "@/shared/Commom/styles";
 
 export const Home: React.FC = () => {
-  const { searchProducts, products, productsNews } = useProduct();
+  const [isActiveFilter, setIsActiveFilter] = useState("Últimos");
+  const { searchProducts, categories, searchCategorys } = useProduct();
 
   useEffect(() => {
     searchProducts();
+    searchCategorys();
   }, []);
 
-  return <Header />;
+  return (
+    <DefaultContainer>
+      <Header />
+      <Filter
+        categories={categories}
+        active={isActiveFilter}
+        handleSelectCatgory={setIsActiveFilter}
+      />
+    </DefaultContainer>
+  );
 };

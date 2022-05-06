@@ -1,7 +1,12 @@
 import React, { createContext, useContext, useState } from "react";
 import { instance } from "@/config/axios";
 
-import { ProductContextData, ProductProviderProps, ProductType } from "./types";
+import {
+  CategoryType,
+  ProductContextData,
+  ProductProviderProps,
+  ProductType,
+} from "./types";
 
 export const ProductContext = createContext({} as ProductContextData);
 
@@ -9,6 +14,20 @@ function ProductProvider({ children }: ProductProviderProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<ProductType[]>([]);
   const [productsNews, setProductsNews] = useState<ProductType[]>([]);
+  const [categories, setCategories] = useState<CategoryType>(["Últimos"]);
+
+  // Get all categorys start app
+  async function searchCategorys() {
+    setIsLoading(true);
+    try {
+      const response = await instance.get(`/products/categories`);
+      setCategories((oldValue) => [...oldValue, ...response.data]);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(true);
+    }
+  }
 
   // Get all products start app
   async function searchProducts() {
@@ -27,7 +46,16 @@ function ProductProvider({ children }: ProductProviderProps) {
   }
 
   return (
-    <ProductContext.Provider value={{ searchProducts, products, productsNews, isLoading }}>
+    <ProductContext.Provider
+      value={{
+        searchProducts,
+        products,
+        productsNews,
+        isLoading,
+        searchCategorys,
+        categories,
+      }}
+    >
       {children}
     </ProductContext.Provider>
   );
