@@ -1,6 +1,6 @@
 import React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { StatusBar } from "react-native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "@/screens/Home";
 import { useTheme } from "styled-components/native";
 
@@ -12,15 +12,24 @@ export const StackRoutes = () => {
     <Navigator
       screenOptions={{
         headerShown: false,
-        contentStyle: { paddingTop: StatusBar.currentHeight },
       }}
       defaultScreenOptions={{
         contentStyle: {
           backgroundColor: COLORS.BACKGROUND,
+          paddingTop: StatusBar.currentHeight,
         },
       }}
     >
-      <Screen name="home" component={Home} />
+      <Screen
+        options={{
+          contentStyle: {
+            backgroundColor: COLORS.HOME_BACKGROUND,
+            paddingTop: StatusBar.currentHeight,
+          },
+        }}
+        name="home"
+        component={Home}
+      />
     </Navigator>
   );
 };

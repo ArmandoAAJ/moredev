@@ -16,7 +16,7 @@ export const Typograph = ({
     <Container
       type={type || FONTS.PRIMARY_TITLE}
       size={size}
-      color={color || COLORS.DEFAULT_DARK}
+      color={color || COLORS.BLACK}
       {...rest}
     >
       {children}
