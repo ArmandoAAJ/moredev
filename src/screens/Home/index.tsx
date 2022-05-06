@@ -3,6 +3,7 @@ import { Text, View } from "react-native";
 import { Typograph } from "@/shared/Typograph/index";
 
 import { useProduct } from "@/hooks/Products";
+import Header from "./components/Header";
 
 export const Home: React.FC = () => {
   const { searchProducts, products, productsNews } = useProduct();
@@ -11,9 +12,5 @@ export const Home: React.FC = () => {
     searchProducts();
   }, []);
 
-  return (
-    <View>
-      <Typograph>soidjaiodjosai</Typograph>
-    </View>
-  );
+  return <Header />;
 };
