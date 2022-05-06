@@ -18,6 +18,7 @@ import {
 } from "@expo-google-fonts/work-sans";
 
 import { StackRoutes } from "@/routes/stack.routes";
+import { ProductProvider } from "@/hooks/Products";
 
 export default function App() {
   const deviceTheme = useColorScheme();
@@ -37,7 +38,9 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>
-        <StackRoutes />
+        <ProductProvider>
+          <StackRoutes />
+        </ProductProvider>
       </NavigationContainer>
     </ThemeProvider>
   );
