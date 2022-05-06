@@ -1,12 +1,12 @@
 import React from "react";
 import { Text, View } from "react-native";
 
-// import { Container } from './styles';
+import { Typograph } from "@/shared/Typograph/index";
 
 export const Home: React.FC = () => {
   return (
     <View>
-      <Text>sihdsuidhas</Text>
+      <Typograph>soidjaiodjosai</Typograph>
     </View>
   );
 };
