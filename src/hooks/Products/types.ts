@@ -7,6 +7,7 @@ export type ProductContextData = {
   searchCategorys: () => Promise<void>;
   isLoading: boolean;
   categories: CategoryType;
+  searchProductsByCategory: (category: string) => void;
 };
 
 export type ProductProviderProps = {

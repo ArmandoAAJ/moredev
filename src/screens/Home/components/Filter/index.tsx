@@ -28,10 +28,12 @@ const Filter = ({ categories, active, handleSelectCatgory }: PropsFilter) => {
         showsHorizontalScrollIndicator={false}
         ItemSeparatorComponent={() => <Separator width={14} />}
         contentContainerStyle={{ paddingHorizontal: 20 }}
+        keyExtractor={(item) => item}
         renderItem={({ item }) => (
           <Card
             active={active === item}
             onPressIn={() => handleSelectCatgory(item)}
+            disabled={active === item}
           >
             <Typograph
               size={8}
@@ -41,7 +43,6 @@ const Filter = ({ categories, active, handleSelectCatgory }: PropsFilter) => {
             </Typograph>
           </Card>
         )}
-        keyExtractor={(item) => item}
       />
     </Container>
   );

@@ -1,8 +1,7 @@
 import styled from "styled-components/native";
 import { PropsCard } from "./types";
 
-export const Container = styled.View`
-`;
+export const Container = styled.View``;
 
 export const Card = styled.Pressable<PropsCard>`
   min-width: 51px;
@@ -13,4 +12,5 @@ export const Card = styled.Pressable<PropsCard>`
   border: 1px solid
     ${({ theme, active }) =>
       active ? theme.COLORS.HOME_PURPLE : theme.COLORS.GREY_300};
+  margin-bottom: 25px;
 `;

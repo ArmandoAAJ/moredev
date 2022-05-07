@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState } from "react";
 import { instance } from "@/config/axios";
-
 import {
   CategoryType,
   ProductContextData,
@@ -45,6 +44,25 @@ function ProductProvider({ children }: ProductProviderProps) {
     }
   }
 
+  async function searchProductsByCategory(category: string) {
+    if (category === "Últimos") {
+      searchProducts();
+      return;
+    }
+    setIsLoading(true);
+    try {
+      const response = await instance.get(`/products/category/${category}`);
+      if (response.data.lenght < 1) return;
+      setProducts(response.data);
+      const news = response.data.slice(0, 5);
+      setProductsNews(news);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(true);
+    }
+  }
+
   return (
     <ProductContext.Provider
       value={{
@@ -54,6 +72,7 @@ function ProductProvider({ children }: ProductProviderProps) {
         isLoading,
         searchCategorys,
         categories,
+        searchProductsByCategory,
       }}
     >
       {children}
