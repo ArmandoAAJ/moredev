@@ -8,7 +8,12 @@ import { Card, Container } from "./styles";
 import { useTheme } from "styled-components/native";
 import { PropsFilter } from "./types";
 
-const Filter = ({ categories, active, handleSelectCatgory }: PropsFilter) => {
+const Filter = ({
+  categories,
+  active,
+  handleSelectCatgory,
+  loading,
+}: PropsFilter) => {
   const { COLORS } = useTheme();
 
   return (
@@ -33,7 +38,7 @@ const Filter = ({ categories, active, handleSelectCatgory }: PropsFilter) => {
           <Card
             active={active === item}
             onPressIn={() => handleSelectCatgory(item)}
-            disabled={active === item}
+            disabled={active === item || loading}
           >
             <Typograph
               size={8}

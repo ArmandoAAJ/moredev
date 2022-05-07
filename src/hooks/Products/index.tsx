@@ -24,7 +24,7 @@ function ProductProvider({ children }: ProductProviderProps) {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   }
 
@@ -40,10 +40,11 @@ function ProductProvider({ children }: ProductProviderProps) {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   }
 
+  // Get products by category
   async function searchProductsByCategory(category: string) {
     if (category === "Últimos") {
       searchProducts();
@@ -59,7 +60,7 @@ function ProductProvider({ children }: ProductProviderProps) {
     } catch (error) {
       console.log(error);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   }
 
