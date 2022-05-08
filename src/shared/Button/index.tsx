@@ -4,10 +4,10 @@ import { Typograph } from "../Typograph";
 import { Container } from "./styles";
 import { Props } from "./types";
 
-export const Button = ({ title }: Props) => {
+export const Button = ({ title, ...rest}: Props) => {
   const { COLORS } = useTheme();
   return (
-    <Container>
+    <Container {...rest}>
       <Typograph color={COLORS.WHITE}>{title}</Typograph>
     </Container>
   );
