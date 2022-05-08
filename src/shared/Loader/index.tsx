@@ -6,7 +6,7 @@ import { Props } from "./types";
 
 export const Loader = ({ show }: Props) => {
   if (!show) {
-    return <></>
+    return null;
   }
   const { COLORS } = useTheme();
   return (
@@ -19,5 +19,3 @@ export const Loader = ({ show }: Props) => {
     </Container>
   );
 };
-
-
