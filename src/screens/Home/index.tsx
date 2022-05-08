@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useProduct } from "@/hooks/Products";
 import Header from "./components/Header";
 import Filter from "./components/Filter";
@@ -7,6 +7,10 @@ import { News } from "./components/News";
 import { List } from "./components/List";
 import { ListDefault } from "./components/ListDefault";
 import { Loader } from "@/shared/Loader";
+import { useCart } from "@/hooks/Cart";
+import { ProductType } from "@/hooks/Products/types";
+import { Button } from "@/shared/Button";
+import { CardCheckout } from "./styles";
 
 export const Home: React.FC = () => {
   const [isActiveFilter, setIsActiveFilter] = useState("Últimos");
@@ -19,6 +23,7 @@ export const Home: React.FC = () => {
     searchProductsByCategory,
     isLoading,
   } = useProduct();
+  const { addItemToCart, cart } = useCart();
 
   useEffect(() => {
     searchProducts();
@@ -30,14 +35,16 @@ export const Home: React.FC = () => {
     searchProductsByCategory(category);
   }
 
-  function handleAddProductCart(id: number) {
-    console.log(id);
+  function handleAddProductCart(product: ProductType) {
+    addItemToCart(product);
   }
+
+  const countCart = useMemo(() => cart.length, [cart]);
 
   return (
     <DefaultContainer>
       <ListDefault>
-        <Header />
+        <Header sizeCart={countCart} />
         <Filter
           categories={categories}
           active={isActiveFilter}
@@ -52,15 +59,20 @@ export const Home: React.FC = () => {
           <>
             <News
               products={productsNews}
-              onPress={(id: number) => handleAddProductCart(id)}
+              onPress={(product: ProductType) => handleAddProductCart(product)}
             />
             <List
               products={products}
-              onPress={(id: number) => handleAddProductCart(id)}
+              onPress={(product: ProductType) => handleAddProductCart(product)}
             />
           </>
         )}
       </ListDefault>
+      {countCart > 0 && (
+        <CardCheckout>
+          <Button title="IR PARA CARRINHO" />
+        </CardCheckout>
+      )}
     </DefaultContainer>
   );
 };
