@@ -36,7 +36,7 @@ export const News = ({ products, onPress }: Props) => {
             title={item.title}
             description={item.description}
             full
-            onPress={() => onPress(item.id)}
+            onPress={() => onPress(item)}
           />
         )}
       />

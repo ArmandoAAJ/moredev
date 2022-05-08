@@ -35,7 +35,7 @@ export const List = ({ products, onPress }: Props) => {
             price={item.price}
             title={item.title}
             full={false}
-            onPress={() => onPress(item.id)}
+            onPress={() => onPress(item)}
           />
         )}
       />
