@@ -25,6 +25,7 @@ export type ProductType = {
     rate: number;
   };
   title: string;
+  quantity?: number 
 };
 
 export type CategoryType = string[];

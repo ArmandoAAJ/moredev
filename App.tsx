@@ -1,4 +1,4 @@
-import 'react-native-gesture-handler';
+import "react-native-gesture-handler";
 import React from "react";
 import { useColorScheme } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
@@ -20,6 +20,7 @@ import {
 
 import { StackRoutes } from "@/routes/stack.routes";
 import { ProductProvider } from "@/hooks/Products";
+import { CartProvider } from "@/hooks/Cart";
 
 export default function App() {
   const deviceTheme = useColorScheme();
@@ -40,7 +41,9 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <NavigationContainer>
         <ProductProvider>
-          <StackRoutes />
+          <CartProvider>
+            <StackRoutes />
+          </CartProvider>
         </ProductProvider>
       </NavigationContainer>
     </ThemeProvider>

@@ -1,17 +1,6 @@
-export interface Props {
-  products: Products[];
-  onPress: (id: number) => void;
-}
+import { ProductType } from "@/hooks/Products/types";
 
-type Products = {
-  category: string;
-  description: string;
-  id: number;
-  image: string;
-  price: number;
-  rating: {
-    count: number;
-    rate: number;
-  };
-  title: string;
-};
+export interface Props {
+  products: ProductType[];
+  onPress: (product: ProductType) => void;
+}
