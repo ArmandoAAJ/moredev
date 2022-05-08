@@ -11,6 +11,7 @@ import { useCart } from "@/hooks/Cart";
 import { ProductType } from "@/hooks/Products/types";
 import { Button } from "@/shared/Button";
 import { CardCheckout } from "./styles";
+import { useNavigation } from "@react-navigation/native";
 
 export const Home: React.FC = () => {
   const [isActiveFilter, setIsActiveFilter] = useState("Últimos");
@@ -24,6 +25,7 @@ export const Home: React.FC = () => {
     isLoading,
   } = useProduct();
   const { addItemToCart, cart } = useCart();
+  const navigation = useNavigation();
 
   useEffect(() => {
     searchProducts();
@@ -40,6 +42,10 @@ export const Home: React.FC = () => {
   }
 
   const countCart = useMemo(() => cart.length, [cart]);
+
+  function handleNavigateCheckout() {
+    navigation.navigate("checkout");
+  }
 
   return (
     <DefaultContainer>
@@ -70,7 +76,7 @@ export const Home: React.FC = () => {
       </ListDefault>
       {countCart > 0 && (
         <CardCheckout>
-          <Button title="IR PARA CARRINHO" />
+          <Button onPressIn={handleNavigateCheckout} title="IR PARA CARRINHO" />
         </CardCheckout>
       )}
     </DefaultContainer>

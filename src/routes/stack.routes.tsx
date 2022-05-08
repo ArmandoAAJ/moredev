@@ -2,6 +2,8 @@ import React from "react";
 import { StatusBar } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "@/screens/Home";
+import Checkout from "@/screens/Checkout";
+
 import { useTheme } from "styled-components/native";
 
 const { Navigator, Screen } = createNativeStackNavigator();
@@ -29,6 +31,16 @@ export const StackRoutes = () => {
         }}
         name="home"
         component={Home}
+      />
+      <Screen
+        options={{
+          contentStyle: {
+            backgroundColor: COLORS.BACKGROUND,
+            paddingTop: StatusBar.currentHeight,
+          },
+        }}
+        name="checkout"
+        component={Checkout}
       />
     </Navigator>
   );
