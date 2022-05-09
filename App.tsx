@@ -23,7 +23,7 @@ import { ProductProvider } from "@/hooks/Products";
 import { CartProvider } from "@/hooks/Cart";
 
 export default function App() {
-  const deviceTheme = useColorScheme();
+  const deviceTheme = "dark"
   const theme = deviceTheme ? themes[deviceTheme] : themes.light;
 
   let [fontsLoaded] = useFonts({
@@ -38,14 +38,14 @@ export default function App() {
     return <AppLoading />;
   }
   return (
-    <ThemeProvider theme={theme}>
-      <NavigationContainer>
-        <ProductProvider>
-          <CartProvider>
-            <StackRoutes />
-          </CartProvider>
-        </ProductProvider>
-      </NavigationContainer>
-    </ThemeProvider>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>
+          <ProductProvider>
+            <CartProvider>
+              <StackRoutes />
+            </CartProvider>
+          </ProductProvider>
+        </NavigationContainer>
+      </ThemeProvider>
   );
 }

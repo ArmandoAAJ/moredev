@@ -17,6 +17,7 @@ function ProductProvider({ children }: ProductProviderProps) {
 
   // Get all categorys start app
   async function searchCategorys() {
+    if (categories.length > 1) return;
     setIsLoading(true);
     try {
       const response = await instance.get(`/products/categories`);

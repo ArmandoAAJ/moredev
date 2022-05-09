@@ -10,7 +10,7 @@ export default {
     HOME_PRODUCT_PRICE: "#8775FE",
     HOME_PURPLE: "#8775FE",
     HOME_BADGE: "#DBDBDB",
-    HOME_CARD_CHECKOUT: '#FFFFFF',
+    HOME_CARD_CHECKOUT: "#FFFFFF",
 
     BACKGROUND: "#E5E5E5",
     BLACK: "#000000",
@@ -20,9 +20,12 @@ export default {
     PURPLE_500: "#8775FE",
 
     GREY_800: "#85868A",
+    GRAY_750: "#696969",
     GREY_700: "#6F6F6F",
     GREY_400: "#CCCCCC",
     GREY_300: "#B4B4B6",
+    GREY_250: "#B5B5B5",
+    GREY_200: "#ECE9FF",
     GREY_100: "#EBEBED",
   },
 
@@ -30,5 +33,8 @@ export default {
     PRIMARY_TITLE: "WorkSans_700Bold",
     SECONDARY_TITLE: "WorkSans_600SemiBold",
     DESCRIPTION: "WorkSans_500Medium",
+
+    TERTIARY_700: "Montserrat_700Bold",
+    TERTIARY_600: "Montserrat_600SemiBold",
   },
 };
