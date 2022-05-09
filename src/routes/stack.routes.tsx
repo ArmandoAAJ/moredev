@@ -3,6 +3,7 @@ import { StatusBar } from "react-native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home } from "@/screens/Home";
 import Checkout from "@/screens/Checkout";
+import { Success } from "@/screens/Success";
 
 import { useTheme } from "styled-components/native";
 
@@ -41,6 +42,10 @@ export const StackRoutes = () => {
         }}
         name="checkout"
         component={Checkout}
+      />
+      <Screen
+        name="success"
+        component={Success}
       />
     </Navigator>
   );
