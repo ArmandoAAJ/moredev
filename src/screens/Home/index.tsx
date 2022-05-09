@@ -12,8 +12,12 @@ import { ProductType } from "@/hooks/Products/types";
 import { Button } from "@/shared/Button";
 import { CardCheckout } from "./styles";
 import { useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
+import { useTheme } from "styled-components";
+import { useColorScheme } from "react-native";
 
 export const Home: React.FC = () => {
+  const deviceTheme = useColorScheme();
   const [isActiveFilter, setIsActiveFilter] = useState("Últimos");
   const {
     searchProducts,
@@ -26,6 +30,7 @@ export const Home: React.FC = () => {
   } = useProduct();
   const { addItemToCart, cart } = useCart();
   const navigation = useNavigation();
+  const { COLORS } = useTheme();
 
   useEffect(() => {
     searchProducts();
@@ -48,37 +53,50 @@ export const Home: React.FC = () => {
   }
 
   return (
-    <DefaultContainer>
-      <ListDefault>
-        <Header sizeCart={countCart} />
-        <Filter
-          categories={categories}
-          active={isActiveFilter}
-          loading={isLoading}
-          handleSelectCatgory={(category) =>
-            handleSearchProductsByCategory(category)
-          }
-        />
-        {isLoading ? (
-          <Loader show={isLoading} />
-        ) : (
-          <>
-            <News
-              products={productsNews}
-              onPress={(product: ProductType) => handleAddProductCart(product)}
+    <>
+      <StatusBar
+        backgroundColor={COLORS.HOME_BACKGROUND}
+        style={"dark" === "dark" ? "light" : "dark"}
+      />
+      <DefaultContainer>
+        <ListDefault>
+          <Header sizeCart={countCart} />
+          <Filter
+            categories={categories}
+            active={isActiveFilter}
+            loading={isLoading}
+            handleSelectCatgory={(category) =>
+              handleSearchProductsByCategory(category)
+            }
+          />
+          {isLoading ? (
+            <Loader show={isLoading} />
+          ) : (
+            <>
+              <News
+                products={productsNews}
+                onPress={(product: ProductType) =>
+                  handleAddProductCart(product)
+                }
+              />
+              <List
+                products={products}
+                onPress={(product: ProductType) =>
+                  handleAddProductCart(product)
+                }
+              />
+            </>
+          )}
+        </ListDefault>
+        {countCart > 0 && (
+          <CardCheckout>
+            <Button
+              onPressIn={handleNavigateCheckout}
+              title="IR PARA CARRINHO"
             />
-            <List
-              products={products}
-              onPress={(product: ProductType) => handleAddProductCart(product)}
-            />
-          </>
+          </CardCheckout>
         )}
-      </ListDefault>
-      {countCart > 0 && (
-        <CardCheckout>
-          <Button onPressIn={handleNavigateCheckout} title="IR PARA CARRINHO" />
-        </CardCheckout>
-      )}
-    </DefaultContainer>
+      </DefaultContainer>
+    </>
   );
 };
