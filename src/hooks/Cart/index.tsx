@@ -8,14 +8,30 @@ function CartProvider({ children }: CartProviderProps) {
   const [cart, setCart] = useState<ProductType[]>([]);
 
   function addItemToCart(product: ProductType) {
-    const findIndex = cart.findIndex((p) => p.id === product.id);
-    if (findIndex === -1) {
+    const index = cart.findIndex((p) => p.id === product.id)
+    if (index === -1) {
       setCart((oldValue) => [...oldValue, { ...product, quantity: 1 }]);
-    } else {
-      let newCart = cart;
-      newCart[findIndex].quantity = newCart[findIndex].quantity! + 1;
-      setCart([...newCart]);
+      return;
     }
+    const newCart = cart.map((p) =>
+      p.id === product.id ? { ...p, quantity: p.quantity! + 1 } : p
+    );
+    setCart(newCart);
+  }
+
+  function removeItemToCart(product: ProductType) {
+    if (product.quantity! === 1 && cart.length === 1) {
+      setCart([]);
+      return;
+    }
+    if (product.quantity! === 1) {
+      setCart((oldValue) => oldValue.filter((e) => e.id !== product.id));
+      return;
+    }
+    const newCart = cart.map((p) =>
+      p.id === product.id ? { ...p, quantity: p.quantity! - 1 } : p
+    );
+    setCart(newCart);
   }
 
   return (
@@ -23,6 +39,8 @@ function CartProvider({ children }: CartProviderProps) {
       value={{
         cart,
         addItemToCart,
+        removeItemToCart,
+        setCart
       }}
     >
       {children}
