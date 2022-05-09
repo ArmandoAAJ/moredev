@@ -7,9 +7,11 @@ import { Badge, Container, Content } from "./styles";
 import { Typograph } from "@/shared/Typograph";
 import { useTheme } from "styled-components";
 import { Props } from "./types";
+import { useNavigation } from "@react-navigation/native";
 
 const Header = ({ sizeCart }: Props) => {
   const { COLORS } = useTheme();
+  const navigation = useNavigation();
 
   return (
     <>
@@ -18,7 +20,7 @@ const Header = ({ sizeCart }: Props) => {
         <Typograph color={COLORS.HOME_TITLE_HEADER} size={18}>
           Produtos
         </Typograph>
-        <Content>
+        <Content onPressIn={() => navigation.navigate("checkout")}>
           {sizeCart > 0 && (
             <Badge>
               <Typograph size={8} color={COLORS.HOME_PURPLE}>
