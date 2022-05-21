@@ -11,7 +11,6 @@ export const News = ({ products, onPress }: Props) => {
   const { FONTS, COLORS } = useTheme();
   return (
     <View>
-      <Separator height={25} />
       <Typograph
         type={FONTS.SECONDARY_TITLE}
         size={24}
