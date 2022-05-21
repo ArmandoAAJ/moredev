@@ -91,7 +91,7 @@ export const Home: React.FC = () => {
         {countCart > 0 && (
           <CardCheckout>
             <Button
-              onPressIn={handleNavigateCheckout}
+              onPress={handleNavigateCheckout}
               title="IR PARA CARRINHO"
             />
           </CardCheckout>

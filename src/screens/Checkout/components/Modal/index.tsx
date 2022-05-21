@@ -31,12 +31,12 @@ export const ConfirmModal = ({ show, cancelModal, confirmModal }: Props) => {
             >
               Se deseja remover o item do carrinho clique em prosseguir.
             </Typograph>
-            <Button onPressIn={confirmModal}>
+            <Button onPress={confirmModal}>
               <Typograph size={10} type={FONTS.TERTIARY_700} color="#5A9ACF">
                 PROSSEGUIR
               </Typograph>
             </Button>
-            <Button onPressIn={cancelModal}>
+            <Button onPress={cancelModal}>
               <Typograph size={10} type={FONTS.TERTIARY_700} color="#FD746A">
                 CANCELAR
               </Typograph>

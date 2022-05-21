@@ -14,7 +14,7 @@ export const Footer = ({ sum, confirmCheckout }: Props) => {
         <Typograph>${sum.toFixed(2)}</Typograph>
       </Content>
       <Separator height={30} />
-      <Button onPressIn={() => confirmCheckout()} style={{ alignSelf: "center" }} title="FINALIZAR COMPRA" />
+      <Button onPress={() => confirmCheckout()} style={{ alignSelf: "center" }} title="FINALIZAR COMPRA" />
     </Container>
   );
 };

@@ -14,7 +14,7 @@ const Header = ({ onPress }: Props) => {
     <>
       <Separator height={11} />
       <Container>
-        <Back onPressIn={() => onPress()}>
+        <Back onPress={() => onPress()}>
           <Svg width={10} height={11} fill="none">
             <Path
               d="m7.103 10.012-5-5 5-5 1.125 1.125L4.36 5.012l3.867 3.875-1.125 1.125Z"

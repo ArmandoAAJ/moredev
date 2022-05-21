@@ -40,8 +40,8 @@ export const Card = ({
         </Row>
       </Content>
       <ContentButtonCard>
-        <Minus onPressIn={() => removeProductToCart()} />
-        <More onPressIn={() => addProductToCart()} />
+        <Minus onPress={() => removeProductToCart()} />
+        <More onPress={() => addProductToCart()} />
       </ContentButtonCard>
     </Container>
   );

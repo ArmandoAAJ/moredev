@@ -20,7 +20,7 @@ const Header = ({ sizeCart }: Props) => {
         <Typograph color={COLORS.HOME_TITLE_HEADER} size={18}>
           Produtos
         </Typograph>
-        <Content onPressIn={() => navigation.navigate("checkout")}>
+        <Content onPress={() => navigation.navigate("checkout")}>
           {sizeCart > 0 && (
             <Badge>
               <Typograph size={8} color={COLORS.HOME_PURPLE}>

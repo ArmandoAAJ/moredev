@@ -37,7 +37,7 @@ const Filter = ({
         renderItem={({ item }) => (
           <Card
             active={active === item}
-            onPressIn={() => handleSelectCatgory(item)}
+            onPress={() => handleSelectCatgory(item)}
             disabled={active === item || loading}
           >
             <Typograph

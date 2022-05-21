@@ -6,7 +6,7 @@ import { Props } from "./types";
 
 export const ButtonAddCart = ({ onPress }: Props) => {
   return (
-    <Pressable onPressIn={() => onPress()}>
+    <Pressable onPress={() => onPress()}>
       <Svg width={30} height={30} fill="none">
         <Rect x={0.5} y={0.5} width={29} height={29} rx={14.5} fill="#fff" />
         <Path
