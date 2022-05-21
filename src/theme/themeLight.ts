@@ -1,6 +1,6 @@
 export default {
   COLORS: {
-    HOME_BACKGROUND: "#E5E5E5",
+    HOME_BACKGROUND: "#FFF",
     HOME_TITLE_HEADER: "#000000",
     HOME_TITLE_CATEGORY: "#6F6F6F",
 
@@ -12,7 +12,7 @@ export default {
     HOME_BADGE: "#DBDBDB",
     HOME_CARD_CHECKOUT: "#FFFFFF",
 
-    BACKGROUND: "#E5E5E5",
+    BACKGROUND: "#FFF",
     BLACK: "#000000",
     WHITE: "#FFFFFF",
 

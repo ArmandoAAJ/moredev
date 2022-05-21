@@ -13,7 +13,7 @@ export default {
     HOME_BADGE: "#DBDBDB",
     HOME_CARD_CHECKOUT: '#393733',
 
-    BACKGROUND: "#E5E5E5",
+    BACKGROUND: "#FFF",
     BLACK: "#000000",
     WHITE: "#FFFFFF",
 
