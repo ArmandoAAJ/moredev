@@ -20,9 +20,9 @@ const Filter = ({
     <Container>
       <Separator height={10} />
       <Typograph
-        style={{ paddingLeft: 20 }}
         size={8}
         color={COLORS.HOME_TITLE_CATEGORY}
+        style={{ marginLeft: 20 }}
       >
         FILTRAR CATEGORIA
       </Typograph>

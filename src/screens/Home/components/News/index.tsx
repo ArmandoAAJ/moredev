@@ -13,10 +13,10 @@ export const News = ({ products, onPress }: Props) => {
     <View>
       <Separator height={25} />
       <Typograph
-        style={{ marginLeft: 20 }}
         type={FONTS.SECONDARY_TITLE}
         size={24}
         color={COLORS.HOME_PRODUCT_TITLE}
+        style={{ marginLeft: 20 }}
       >
         Novidades
       </Typograph>

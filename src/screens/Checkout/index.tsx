@@ -46,7 +46,6 @@ const Checkout: React.FC = () => {
     <>
       <StatusBar backgroundColor={COLORS.BACKGROUND} style="dark" />
       <DefaultContainer>
-        <Header onPress={handleGoBack} />
         <ListCart
           cart={cart}
           addProductToCart={(product) => handleAddproductToCart(product)}

@@ -1,11 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useProduct } from "@/hooks/Products";
-import Header from "./components/Header";
 import Filter from "./components/Filter";
 import { DefaultContainer } from "@/shared/Commom/styles";
 import { News } from "./components/News";
 import { List } from "./components/List";
-import { ListDefault } from "./components/ListDefault";
 import { Loader } from "@/shared/Loader";
 import { useCart } from "@/hooks/Cart";
 import { ProductType } from "@/hooks/Products/types";
@@ -15,6 +13,8 @@ import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { useTheme } from "styled-components";
 import { useColorScheme } from "react-native";
+import { Typograph } from "@/shared/Typograph";
+import { Separator } from "@/shared/Separator";
 
 export const Home: React.FC = () => {
   const deviceTheme = useColorScheme();
@@ -30,7 +30,7 @@ export const Home: React.FC = () => {
   } = useProduct();
   const { addItemToCart, cart } = useCart();
   const navigation = useNavigation();
-  const { COLORS } = useTheme();
+  const { COLORS, FONTS } = useTheme();
 
   useEffect(() => {
     searchProducts();
@@ -56,22 +56,23 @@ export const Home: React.FC = () => {
     <>
       <StatusBar
         backgroundColor={COLORS.HOME_BACKGROUND}
-        style={"dark" === "dark" ? "light" : "dark"}
+        style={deviceTheme === "dark" ? "light" : "dark"}
       />
-      <DefaultContainer>
-        <ListDefault>
-          <Header sizeCart={countCart} />
-          <Filter
-            categories={categories}
-            active={isActiveFilter}
-            loading={isLoading}
-            handleSelectCatgory={(category) =>
-              handleSearchProductsByCategory(category)
-            }
-          />
-          {isLoading ? (
-            <Loader show={isLoading} />
-          ) : (
+      <Filter
+        categories={categories}
+        active={isActiveFilter}
+        loading={isLoading}
+        handleSelectCatgory={(category) =>
+          handleSearchProductsByCategory(category)
+        }
+      />
+      {isLoading ? (
+        <Loader show={isLoading} />
+      ) : (
+        <List
+          products={products}
+          onPress={(product: ProductType) => handleAddProductCart(product)}
+          headerComponent={() => (
             <>
               <News
                 products={productsNews}
@@ -79,24 +80,25 @@ export const Home: React.FC = () => {
                   handleAddProductCart(product)
                 }
               />
-              <List
-                products={products}
-                onPress={(product: ProductType) =>
-                  handleAddProductCart(product)
-                }
-              />
+              <Separator height={20} />
+              <Typograph
+                type={FONTS.SECONDARY_TITLE}
+                size={24}
+                color={COLORS.HOME_PRODUCT_TITLE}
+                style={{ marginLeft: 14 }}
+              >
+                Listagem
+              </Typograph>
+              <Separator height={32} />
             </>
           )}
-        </ListDefault>
-        {countCart > 0 && (
-          <CardCheckout>
-            <Button
-              onPress={handleNavigateCheckout}
-              title="IR PARA CARRINHO"
-            />
-          </CardCheckout>
-        )}
-      </DefaultContainer>
+        />
+      )}
+      {countCart > 0 && (
+        <CardCheckout>
+          <Button onPress={handleNavigateCheckout} title="IR PARA CARRINHO" />
+        </CardCheckout>
+      )}
     </>
   );
 };
